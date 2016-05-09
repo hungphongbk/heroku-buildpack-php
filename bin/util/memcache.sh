@@ -2,7 +2,7 @@
 # Build Path: /app/.heroku/php/
 
 dep_url="git://github.com/hungphongbk/memcache.git"
-$memcache_dir=memcache
+memcache_dir=memcache
 echo "-----> Building Memcache..."
 
 ### Memcache
