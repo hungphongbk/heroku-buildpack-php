@@ -16,7 +16,7 @@ cd $memcache_dir
 
 # ln -s $BUILD_DIR/.heroku /app/.heroku
 # export PATH=/app/.heroku/php/bin:$PATH
-bash /app/.heroku/php/bin/phpize
+. /app/.heroku/php/bin/phpize
 ./configure --with-php-config=/app/.heroku/php/bin/php-config
 make
 make install
