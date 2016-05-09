@@ -16,10 +16,12 @@ cd $memcache_dir
 
 # ln -s $BUILD_DIR/.heroku /app/.heroku
 # export PATH=/app/.heroku/php/bin:$PATH
-/app/.heroku/php/bin/phpize >/dev/null
-./configure --with-php-config=/app/.heroku/php/bin/php-config >/dev/null
-make >/dev/null
-make install >/dev/null
+{
+  /app/.heroku/php/bin/phpize
+  ./configure --with-php-config=/app/.heroku/php/bin/php-config
+  make
+  make install
+} &>/dev/null
 cd
 echo "important extension memcache into php.ini"
 echo "extension=memcache.so" >> /app/.heroku/php/etc/php/php.ini
