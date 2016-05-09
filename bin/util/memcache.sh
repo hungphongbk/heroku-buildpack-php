@@ -14,10 +14,10 @@ if [ ! -d "$memcache_dir" ]; then
 fi
 cd $memcache_dir
 
-BUILD_DIR=$1
-ln -s $BUILD_DIR/.heroku /app/.heroku
-export PATH=/app/.heroku/php/bin:$PATH
-ls $BUILD_DIR/.heroku
+# BUILD_DIR=$1
+# ln -s $BUILD_DIR/.heroku /app/.heroku
+# export PATH=/app/.heroku/php/bin:$PATH
+ls $build_dir/.heroku/php
 /app/php/bin/phpize
 ./configure --with-php-config=/app/php/bin/php-config
 make
