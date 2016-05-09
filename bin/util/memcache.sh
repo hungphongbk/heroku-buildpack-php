@@ -12,7 +12,7 @@ if [ ! -d "$memcache_dir" ]; then
   echo "[ERROR] Failed to find Memcache directory $memcache_dir"
   exit
 fi
-cd $memcache
+cd $memcache_dir
 
 BUILD_DIR=$1
 ln -s $BUILD_DIR/.heroku /app/.heroku
