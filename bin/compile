@@ -307,9 +307,11 @@ for f in ${hpbk_backups[@]};
 do
     if [ -f $backup_dir/$f ]; then
         mv $backup_dir/$f $build_dir/$f
-    else if [ -d $build_dir/$f ]; then
-        mkdir -p $build_dir/$f
-        mv -rp $backup_dir/$f/* $build_dir/$f
+    else
+        if [ -d $build_dir/$f ]; then
+            mkdir -p $build_dir/$f
+            mv -rp $backup_dir/$f/* $build_dir/$f
+        fi
     fi
 done
 rm -rf $backup_dir
