@@ -26,6 +26,8 @@ source $bp_dir/bin/util/blackfire.sh
 # detect backup
 declare -a hpbk_backups=()
 hpbk_backups=$(read_backup_list)
+$backup_dir="/tmp/`random-string 20`-backup";
+echo $backup_dir;
 for f in ${hpbk_backups[@]};
 do
     echo $f
