@@ -55,10 +55,16 @@ export_env_dir() {
 }
 
 read_backup_list(){
-  ls
+  local list=()
   if [ ! -f $build_dir/backup.txt ]; then
-    echo "------> Notice: backup.txt was not found. Nothing will be backup"
+    echo "-----> Notice: backup.txt was not found. Nothing will be backup"
   else
-    echo "------> Notice: backup.txt was found :)"
+    echo "-----> Notice: backup.txt was found :)"
+    cat $build_dir/backup.txt | while read line
+    do
+      list+=("$build_dir/$line")
+      echo "-----> $build_dir/$line"
+    done
   fi
+  return $list
 }
