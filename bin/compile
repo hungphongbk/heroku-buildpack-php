@@ -26,7 +26,7 @@ source $bp_dir/bin/util/blackfire.sh
 # detect backup
 declare -a hpbk_backups=();
 # [vi] neu ton tai file backup.txt, list noi dung cua no vao hpbk_backup
-if [ -f $build_dir/backup.txt]; then
+if [ -f $build_dir/backup.txt ]; then
     while IFS= read -r line
     do
         hpbk_backups+=("$line");
