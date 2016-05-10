@@ -24,7 +24,12 @@ source $bp_dir/bin/util/newrelic.sh
 source $bp_dir/bin/util/blackfire.sh
 
 # detect backup
-# read_backup_list
+declare -a hpbk_backups=()
+hpbk_backups=$(read_backup_list)
+for f in ${hpbk_backups[@]};
+do
+    echo $f
+done
 
 # if this is set it prevents Git clones (e.g. for Composer installs from source) during the build in some circumstances, and it is set in SSH Git deploys to Heroku
 unset GIT_DIR
