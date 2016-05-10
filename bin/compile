@@ -36,10 +36,15 @@ fi
 slug=`date | md5sum`
 backup_dir="/tmp/${slug// }-backup";
 echo $backup_dir;
+mkdir -p "$backup_dir"
 # test
 for f in ${hpbk_backups[@]};
 do
-    echo $f
+    if [ -f $build_dir/$f ]; then
+        cp $build_dir/$f $backup_dir/$f
+    else if [ -d $build_dir/$f ]; then
+        cp -R $build_dir/$f/* $backup_dir/$f
+    fi
 done
 
 # if this is set it prevents Git clones (e.g. for Composer installs from source) during the build in some circumstances, and it is set in SSH Git deploys to Heroku
@@ -293,3 +298,14 @@ install_newrelic_ext
 install_newrelic_userini
 
 source $bp_dir/bin/util/memcache.sh
+
+echo "-----> Finish backup"
+for f in ${hpbk_backups[@]};
+do
+    if [ -f $backup_dir/$f ]; then
+        mv $backup_dir/$f $build_dir/$f
+    else if [ -d $build_dir/$f ]; then
+        mv -R $backup_dir/$f/* $build_dir/$f
+    fi
+done
+rm -rf $backup_dir
