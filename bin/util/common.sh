@@ -62,6 +62,7 @@ read_backup_list(){
     echo "-----> Notice: backup.txt was found :)"
     IFS=$'\n'
     for LINE in `cat $build_dir/backup.txt`
+    do
       FLIST+=("$build_dir/$LINE")
       echo "-----> $build_dir/$LINE"
     done
