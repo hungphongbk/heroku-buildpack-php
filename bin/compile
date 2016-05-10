@@ -24,11 +24,19 @@ source $bp_dir/bin/util/newrelic.sh
 source $bp_dir/bin/util/blackfire.sh
 
 # detect backup
-declare -a hpbk_backups=()
-hpbk_backups=$(read_backup_list);
+declare -a hpbk_backups=();
+# [vi] neu ton tai file backup.txt, list noi dung cua no vao hpbk_backup
+if [ -f $build_dir/backup.txt]; then
+    while IFS= read -r line
+    do
+        hpbk_backups+=("$line");
+    done
+fi
+# [vi] tao mot thu muc backup ngau nhien
 slug=`date | md5sum`
 backup_dir="/tmp/${slug// }-backup";
 echo $backup_dir;
+# test
 for f in ${hpbk_backups[@]};
 do
     echo $f
