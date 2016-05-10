@@ -42,8 +42,10 @@ for f in ${hpbk_backups[@]};
 do
     if [ -f $build_dir/$f ]; then
         cp $build_dir/$f $backup_dir/$f
-    else if [ -d $build_dir/$f ]; then
-        cp -R $build_dir/$f/* $backup_dir/$f
+    else
+        if [ -d $build_dir/$f ]; then
+            cp -R $build_dir/$f/* $backup_dir/$f
+        fi
     fi
 done
 
