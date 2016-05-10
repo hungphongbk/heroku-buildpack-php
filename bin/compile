@@ -26,8 +26,8 @@ source $bp_dir/bin/util/blackfire.sh
 # detect backup
 declare -a hpbk_backups=()
 hpbk_backups=$(read_backup_list)
-slug=$(random_string)
-backup_dir="/tmp/$slug-backup";
+slug=`date | md5sum`
+backup_dir="/tmp/${slug}-backup";
 echo $backup_dir;
 for f in ${hpbk_backups[@]};
 do
