@@ -66,5 +66,4 @@ read_backup_list(){
       echo "-----> $build_dir/$LINE"
     done
   fi
-  return $FLIST
 }
