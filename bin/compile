@@ -25,7 +25,7 @@ source $bp_dir/bin/util/blackfire.sh
 
 # detect backup
 declare -a hpbk_backups=()
-hpbk_backups=$(`read_backup_list`)
+hpbk_backups="$(read_backup_list)"
 for f in ${hpbk_backups[@]};
 do
     echo $f
