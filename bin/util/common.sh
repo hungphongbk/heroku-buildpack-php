@@ -56,9 +56,9 @@ export_env_dir() {
 
 read_backup_list(){
   local -a flist=()
-  if [ -f $build_dir/backup.txt ]; then
+  if [ -f $build_dir/backup2.txt ]; then
     IFS=$'\n'
-    for LINE in `cat $build_dir/backup.txt`
+    for LINE in `cat $build_dir/backup2.txt`
     do
       flist+=("$build_dir/$LINE")
       echo "$build_dir/$LINE"
