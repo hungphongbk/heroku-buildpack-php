@@ -55,16 +55,14 @@ export_env_dir() {
 }
 
 read_backup_list(){
-  FLIST=()
-  if [ ! -f $build_dir/backup.txt ]; then
-    echo "-----> Notice: backup.txt was not found. Nothing will be backup"
-  else
-    echo "-----> Notice: backup.txt was found :)"
+  local -a flist=()
+  if [ -f $build_dir/backup.txt ]; then
     IFS=$'\n'
     for LINE in `cat $build_dir/backup.txt`
     do
-      FLIST+=("$build_dir/$LINE")
-      echo "-----> $build_dir/$LINE"
+      flist+=("$build_dir/$LINE")
+      echo "$build_dir/$LINE"
     done
   fi
+  echo ${flist[@]}
 }
