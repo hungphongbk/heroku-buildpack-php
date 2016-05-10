@@ -60,8 +60,8 @@ read_backup_list(){
     echo "-----> Notice: backup.txt was not found. Nothing will be backup"
   else
     echo "-----> Notice: backup.txt was found :)"
-    cat $build_dir/backup.txt | while read LINE
-    do
+    IFS=$'\n'
+    for LINE in `cat $build_dir/backup.txt`
       FLIST+=("$build_dir/$LINE")
       echo "-----> $build_dir/$LINE"
     done
