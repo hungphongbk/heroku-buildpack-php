@@ -53,3 +53,12 @@ export_env_dir() {
     done
   fi
 }
+
+read_backup_list(){
+  ls
+  if [ ! -f $build_dir/backup.txt ]; then
+    echo "------> Notice: backup.txt was not found. Nothing will be backup"
+  else
+    echo "------> Notice: backup.txt was found :)"
+  fi
+}
